@@ -17,12 +17,47 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-   
+
+    let launchStatus= document.getElementById("launchStatus");
+    launchStatus.style.color = "red";
+
+    if(testInput.trim() === ""){
+        return "Empty"
+    }
+    if(isNaN(testInput)){
+        return "Not a Number"
+    }
+    if(!(isNaN(testInput))){
+        return "Is a Number"
+    }
 }
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
+function formSubmission(launchStatus, list, pilot, copilot, fuelLevel, cargoLevel) {
+
+    const pilotStatus = document.getElementById("pilotStatus");
+    const copilotStatus = document.getElementById("copilotStatus");
+    const fuelStatus = document.getElementById("fuelStatus");
+    const cargoStatus = document.getElementById("cargoStatus");
+
+    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`
+    copilotStatus.innerHTML = `Pilot ${copilot} is ready for launch`
+
+    if(fuelLevel < 10000){
+        fuelStatus.innerHTML = `Fuel level is too low for launch`;
+        list.style.visibility = "visible";
+        launchStatus.style.color = "red";
+        launchStatus.innerHTML = `Shuttle Not Ready For Launch`;
+    } else if (cargoLevel > 10000){
+        cargoStatus.innerHTML = `Cargo mass is too high for launch`;
+        list.style.visibility = "visible";
+        launchStatus.style.color = "#C7254E";
+        launchStatus.innerHTML = `Shuttle Not Ready For Launch`;
+    } else {
+        launchStatus.style.color = "#419F6A";
+        launchStatus.innerHTML = `Shuttle Is Ready For Launch`
+    }  
 }
+
 
 async function myFetch() {
     let planetsReturned;
