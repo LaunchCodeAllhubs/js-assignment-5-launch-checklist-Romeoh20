@@ -22,22 +22,20 @@ window.addEventListener("load",function(){
         }else if(validateInput(fuelInput.value) !== "Is a Number" || validateInput(cargoInput.value) !== "Is a Number"){
             alert("Make sure to enter valid information for each field");
             event.preventDefault();
-        }
-
+        }else{
         //form submission/ status checks
         formSubmission(launchStatus,faultyItems,pilotInput.value,copilotInput.value,fuelInput.value,cargoInput.value);
         event.preventDefault();
+        }
     });
 
-   let listedPlanets;
-   // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-   let listedPlanetsResponse;
+   let listedPlanets 
+   let listedPlanetsResponse = myFetch();
    listedPlanetsResponse.then(function (result) {
        listedPlanets = result;
-       console.log(listedPlanets);
-   }).then(function () {
-       console.log(listedPlanets);
-       // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-   })
-   
+       chosenPlanet = pickPlanet(result);
+       console.log(chosenPlanet.name);
+       addDestinationInfo(chosenPlanet.name,chosenPlanet.diameter,chosenPlanet.star,chosenPlanet.distance,chosenPlanet.moon,chosenPlanet.image)
+   });
+     
 });
