@@ -13,21 +13,21 @@ window.addEventListener("load",function(){
     //form validation
     let form = document.querySelector("form");
     form.addEventListener("submit",function(event){
-        if(pilotInput.value.trim() === "" || copilotInput.value.trim() === "" || fuelInput.value.trim() === "" || cargoInput.value.trim() === ""){
-            alert("All fields are required!");
-            event.preventDefault();
-        } else if(validateInput(pilotInput.value) !== "Not a Number" || validateInput(copilotInput.value) !== "Not a Number"){
-            alert ("Make sure to enter valid information for each field")
-            event.preventDefault();
-        }else if(validateInput(fuelInput.value) !== "Is a Number" || validateInput(cargoInput.value) !== "Is a Number"){
-            alert("Make sure to enter valid information for each field");
-            event.preventDefault();
-        }else{
+        // if(pilotInput.value.trim() === "" || copilotInput.value.trim() === "" || fuelInput.value.trim() === "" || cargoInput.value.trim() === ""){
+        //     alert("All fields are required!");
+        //     event.preventDefault();
+        // } else if(validateInput(pilotInput.value) !== "Not a Number" || validateInput(copilotInput.value) !== "Not a Number"){
+        //     alert ("Make sure to enter valid information for each field")
+        //     event.preventDefault();
+        // }else if(validateInput(fuelInput.value) !== "Is a Number" || validateInput(cargoInput.value) !== "Is a Number"){
+        //     alert("Make sure to enter valid information for each field");
+        //     event.preventDefault();
+        // }else{
         //form submission/ status checks
-        formSubmission(launchStatus,faultyItems,pilotInput.value,copilotInput.value,fuelInput.value,cargoInput.value);
         event.preventDefault();
-        }
-    });
+        formSubmission(document,faultyItems,pilotInput.value,copilotInput.value,fuelInput.value,cargoInput.value);
+        });
+    
 
    let listedPlanets 
    let listedPlanetsResponse = myFetch();
@@ -35,7 +35,7 @@ window.addEventListener("load",function(){
        listedPlanets = result;
        chosenPlanet = pickPlanet(result);
        console.log(chosenPlanet.name);
-       addDestinationInfo(chosenPlanet.name,chosenPlanet.diameter,chosenPlanet.star,chosenPlanet.distance,chosenPlanet.moon,chosenPlanet.image)
+       addDestinationInfo(chosenPlanet.name,chosenPlanet.diameter,chosenPlanet.star,chosenPlanet.distance,chosenPlanet.moons,chosenPlanet.image)
    });
      
 });

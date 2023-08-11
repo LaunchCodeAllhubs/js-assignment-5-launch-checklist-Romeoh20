@@ -33,6 +33,16 @@ function validateInput(testInput) {
 
 function formSubmission(launchStatus, list, pilot, copilot, fuelLevel, cargoLevel) {
 
+    console.log(validateInput(pilot))
+    if(validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty"){
+        alert("all fields are required")
+    } else if(validateInput(pilotInput.value) !== "Not a Number" || validateInput(copilotInput.value) !== "Not a Number"){
+        alert ("Make sure to enter valid information for each field")
+    }else if(validateInput(fuelInput.value) !== "Is a Number" || validateInput(cargoInput.value) !== "Is a Number"){
+        alert("Make sure to enter valid information for each field");
+    }else{
+
+    
     const pilotStatus = document.getElementById("pilotStatus");
     const copilotStatus = document.getElementById("copilotStatus");
     const fuelStatus = document.getElementById("fuelStatus");
@@ -65,6 +75,7 @@ function formSubmission(launchStatus, list, pilot, copilot, fuelLevel, cargoLeve
         fuelStatus.innerHTML = `Fuel level is high enough for launch`;
         cargoStatus.innerHTML = `Cargo mass is low enough for launch`;
     }  
+}
 }
 
 
