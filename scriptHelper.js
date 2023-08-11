@@ -1,7 +1,7 @@
 // Write your helper functions here!
 require('isomorphic-fetch');
 
-function addDestinationInfo(name, diameter, star, distance, moons, imageUrl) {
+function addDestinationInfo(document,name, diameter, star, distance, moons, imageUrl) {
 
    let missionTarget = document.getElementById("missionTarget");
    missionTarget.innerHTML = `
@@ -20,7 +20,7 @@ function addDestinationInfo(name, diameter, star, distance, moons, imageUrl) {
 
 function validateInput(testInput) {
 
-    if(testInput.trim() === ""){
+    if(testInput === ""){
         return "Empty"
     }
     if(isNaN(testInput)){
@@ -31,14 +31,14 @@ function validateInput(testInput) {
     }
 }
 
-function formSubmission(launchStatus, list, pilot, copilot, fuelLevel, cargoLevel) {
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     console.log(validateInput(pilot))
     if(validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty"){
         alert("all fields are required")
-    } else if(validateInput(pilotInput.value) !== "Not a Number" || validateInput(copilotInput.value) !== "Not a Number"){
+    } else if(validateInput(pilot) !== "Not a Number" || validateInput(copilot) !== "Not a Number"){
         alert ("Make sure to enter valid information for each field")
-    }else if(validateInput(fuelInput.value) !== "Is a Number" || validateInput(cargoInput.value) !== "Is a Number"){
+    }else if(validateInput(fuelLevel) !== "Is a Number" || validateInput(cargoLevel) !== "Is a Number"){
         alert("Make sure to enter valid information for each field");
     }else{
 
@@ -47,6 +47,7 @@ function formSubmission(launchStatus, list, pilot, copilot, fuelLevel, cargoLeve
     const copilotStatus = document.getElementById("copilotStatus");
     const fuelStatus = document.getElementById("fuelStatus");
     const cargoStatus = document.getElementById("cargoStatus");
+    const launchStatus = document.getElementById("launchStatus");
 
     pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`
     copilotStatus.innerHTML = `Co-Pilot ${copilot} is ready for launch`

@@ -9,6 +9,7 @@ window.addEventListener("load",function(){
     //status variables
     const faultyItems = document.getElementById("faultyItems");
     const launchStatus = document.getElementById("launchStatus");
+    faultyItems.style.visibility = "hidden";
 
     //form validation
     let form = document.querySelector("form");
@@ -35,7 +36,7 @@ window.addEventListener("load",function(){
        listedPlanets = result;
        chosenPlanet = pickPlanet(result);
        console.log(chosenPlanet.name);
-       addDestinationInfo(chosenPlanet.name,chosenPlanet.diameter,chosenPlanet.star,chosenPlanet.distance,chosenPlanet.moons,chosenPlanet.image)
+       addDestinationInfo(document,chosenPlanet.name,chosenPlanet.diameter,chosenPlanet.star,chosenPlanet.distance,chosenPlanet.moons,chosenPlanet.image)
    });
      
 });
