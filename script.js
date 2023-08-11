@@ -10,6 +10,7 @@ window.addEventListener("load",function(){
     const faultyItems = document.getElementById("faultyItems");
     const launchStatus = document.getElementById("launchStatus");
 
+    //form validation
     let form = document.querySelector("form");
     form.addEventListener("submit",function(event){
         if(pilotInput.value.trim() === "" || copilotInput.value.trim() === "" || fuelInput.value.trim() === "" || cargoInput.value.trim() === ""){
@@ -22,12 +23,11 @@ window.addEventListener("load",function(){
             alert("Make sure to enter valid information for each field");
             event.preventDefault();
         }
+
+        //form submission/ status checks
         formSubmission(launchStatus,faultyItems,pilotInput.value,copilotInput.value,fuelInput.value,cargoInput.value);
         event.preventDefault();
     });
-});
-
-window.addEventListener("load", function() {
 
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
